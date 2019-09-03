@@ -1,4 +1,6 @@
-package com.example.demo;
+package ch.hearc.jee.apigateway;
+
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +13,7 @@ public class ApiGatewayApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		assertTrue(true);
 	}
 
 }
