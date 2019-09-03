@@ -1,0 +1,14 @@
+management:
+  endpoint:
+    health:
+      sensitive: false
+    restart:
+      enabled: true
+    shutdown:
+      enabled: true
+    security:
+    enabled: false
+  
+logging:
+  level:
+    org.springframework.cloud.consul: DEBUG
