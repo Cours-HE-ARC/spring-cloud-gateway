@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 
 import lombok.extern.slf4j.Slf4j;
 
-@EnableDiscoveryClient
+
 @SpringBootApplication
 @Slf4j
 public class ApiGatewayApplication {
@@ -31,14 +31,20 @@ public class ApiGatewayApplication {
 	@PostConstruct
 	public void postContextConstruct() {
 		log.info("application context started");
-		log.info("Consul properties -test- : " + consulProperties.getTest());
-		log.info("Discovery clients:");
 		
-		discoveryClient.getInstances("client.gateway-1").forEach(instance -> {
-			log.info("Uri: " + instance.getUri());
+		log.info("*************** Consull properties ***************");
+		log.info("config/api-gateway/test : " + consulProperties.getTest());
+		
+		log.info("*************** Discovery clients services ***************");
+		discoveryClient.getServices().forEach(service -> {
+			log.info("Service: " + service);
 		});
 		
-	
+		log.info("*************** Discovery clients instances ***************");
+		discoveryClient.getInstances("client-gateway-1").forEach(instance -> {
+			log.info("Uri: {}, ServiceId:{}",instance.getUri(),instance.getServiceId());
+			
+		});
 	}
 	
 	@Bean 

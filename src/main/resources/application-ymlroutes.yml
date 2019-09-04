@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      
+      - id: hello_api_route
+        uri: lb://client-gateway-1
+        predicates:
+        - Path=/hello
+        filters:
+        - RewritePath=/hello,/api/hello
+      
+      - id: http_bin_route
+        uri: http://httpbin.org:80
+        predicates:
+        - Path=/get
