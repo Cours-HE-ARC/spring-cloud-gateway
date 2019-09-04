@@ -3,6 +3,8 @@ server:
 
 management:
   endpoint:
+    gateway:
+      enabled: true
     health:
       sensitive: false
     restart:
@@ -15,3 +17,14 @@ management:
 logging:
   level:
     org.springframework.cloud.consul: DEBUG
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+    consul:
+      discovery:
+        enabled: true
+     
